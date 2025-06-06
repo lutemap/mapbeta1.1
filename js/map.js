@@ -115,6 +115,9 @@ function onEachFeature(feature, layer) {
   `;
 
   layer.bindPopup(popupContent);
+  layer.on('popupopen', function (e) {
+    map.panTo(e.popup._latlng, { animate: true });
+  });
 }
 
 var markers = L.geoJSON(json_map_data_2, {
