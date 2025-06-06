@@ -117,7 +117,7 @@ function onEachFeature(feature, layer) {
   layer.bindPopup(popupContent);
   layer.on('popupopen', function (e) {
     map.panTo(e.popup._latlng, { animate: true });
-    setTimeout(() => map.panBy([0, -100]), 200);
+    setTimeout(() => map.panBy([0, -180]), 200);
   });
 }
 
