@@ -10,6 +10,7 @@
     html, body, #map {
       width: 100%; height: 100%; margin: 0; padding: 0;
     }
+
     #filter-panel {
       position: absolute;
       top: 10px;
@@ -22,16 +23,50 @@
       z-index: 999;
       font-family: sans-serif;
     }
+
     #filter-panel h3 {
       margin-top: 0;
     }
+
     .filter-group {
       margin-bottom: 10px;
+    }
+
+    #language-switcher {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 999;
+      font-family: sans-serif;
+    }
+
+    #language-switcher button {
+      font-size: 14px;
+      padding: 4px 8px;
+      margin: 0 3px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #language-switcher button:hover {
+      background-color: #f0f0f0;
     }
   </style>
 </head>
 <body>
   <div id="map"></div>
+
+  <!-- Language switcher -->
+  <div id="language-switcher">
+    <button onclick="translatePage('en')">EN</button>
+    <button onclick="translatePage('tr')">TR</button>
+  </div>
 
   <div id="filter-panel">
     <h3>Filters</h3>
@@ -82,5 +117,39 @@
   <script src="js/labels.js"></script>
   <script src="data/map_data_2.js"></script>
   <script src="js/map.js"></script>
+
+  <!-- Google Translate Integration -->
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function translatePage(lang) {
+      if (!window.google || !window.google.translate) {
+        var gt = document.createElement('script');
+        gt.src = "//translate.google.com/translate_a/element.js?cb=initTranslate";
+        document.body.appendChild(gt);
+      } else {
+        doTranslate(lang);
+      }
+
+      window.initTranslate = function () {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,tr',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+        setTimeout(function () {
+          doTranslate(lang);
+        }, 500);
+      };
+
+      function doTranslate(langCode) {
+        var select = document.querySelector(".goog-te-combo");
+        if (select) {
+          select.value = langCode;
+          select.dispatchEvent(new Event('change'));
+        }
+      }
+    }
+  </script>
 </body>
 </html>
