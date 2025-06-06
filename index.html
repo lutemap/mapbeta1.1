@@ -119,8 +119,14 @@
 
   <!-- Toggle filter panel script -->
   <script>
+    let filterReady = false;
     function toggleFilters() {
-      var panel = document.getElementById("filter-panel");
+      const panel = document.getElementById("filter-panel");
+      if (!filterReady) {
+        panel.style.display = "block";
+        filterReady = true;
+        return;
+      }
       panel.style.display = (panel.style.display === "none") ? "block" : "none";
     }
   </script>
