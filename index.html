@@ -119,15 +119,9 @@
 
   <!-- Toggle filter panel script -->
   <script>
-    let filterReady = false;
     function toggleFilters() {
       const panel = document.getElementById("filter-panel");
-      if (!filterReady) {
-        panel.style.display = "block";
-        filterReady = true;
-        return;
-      }
-      panel.style.display = (panel.style.display === "none") ? "block" : "none";
+      panel.style.display = (panel.style.display === "none" || panel.style.display === "") ? "block" : "none";
     }
   </script>
 
@@ -147,14 +141,18 @@
     }
 
     function translatePage(langCode) {
-      const interval = setInterval(() => {
+      function tryTranslate(attemptsLeft) {
         const select = document.querySelector(".goog-te-combo");
         if (select) {
           select.value = langCode;
           select.dispatchEvent(new Event("change"));
-          clearInterval(interval);
+        } else if (attemptsLeft > 0) {
+          setTimeout(() => tryTranslate(attemptsLeft - 1), 500);
+        } else {
+          console.warn("Google Translate dropdown not found.");
         }
-      }, 300);
+      }
+      tryTranslate(10); // retry up to 10 times (5 seconds max)
     }
   </script>
 </body>
