@@ -11,28 +11,42 @@
       width: 100%; height: 100%; margin: 0; padding: 0;
     }
 
-    #filter-toggle {
+    #control-panel {
       position: absolute;
       top: 10px;
       right: 10px;
       background: rgba(255, 255, 255, 0.9);
       padding: 6px 10px;
       border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       z-index: 1000;
       font-family: sans-serif;
+    }
+
+    #control-panel button {
+      font-size: 14px;
+      padding: 4px 8px;
+      margin: 3px 0;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      width: 60px;
+    }
+
+    #control-panel button:hover {
+      background-color: #f0f0f0;
     }
 
     #filter-panel {
       display: none;
       position: absolute;
-      top: 50px;
+      top: 80px;
       right: 10px;
       background: rgba(255,255,255,0.95);
       padding: 10px;
       border-radius: 8px;
-      max-height: 90vh;
+      max-height: 80vh;
       overflow-y: auto;
       z-index: 999;
       font-family: sans-serif;
@@ -46,45 +60,17 @@
     .filter-group {
       margin-bottom: 10px;
     }
-
-    #language-switcher {
-      position: absolute;
-      top: 10px;
-      right: 130px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 6px 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1000;
-      font-family: sans-serif;
-    }
-
-    #language-switcher button {
-      font-size: 14px;
-      padding: 4px 8px;
-      margin: 0 3px;
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    #language-switcher button:hover {
-      background-color: #f0f0f0;
-    }
   </style>
 </head>
 <body>
   <div id="map"></div>
 
-  <!-- Language switcher -->
-  <div id="language-switcher">
+  <!-- Combined Control Panel (Language + Filter Toggle) -->
+  <div id="control-panel">
     <button onclick="translatePage('en')">EN</button>
     <button onclick="translatePage('tr')">TR</button>
+    <button onclick="toggleFilters()">Filters</button>
   </div>
-
-  <!-- Filter Toggle Button -->
-  <div id="filter-toggle" onclick="toggleFilters()">Filters</div>
 
   <div id="filter-panel">
     <h3>Filters</h3>
@@ -141,38 +127,29 @@
 
   <!-- Google Translate Integration -->
   <div id="google_translate_element" style="display:none;"></div>
-  <script type="text/javascript">
-    function translatePage(lang) {
-      if (!window.google || !window.google.translate) {
-        var gt = document.createElement('script');
-        gt.src = "//translate.google.com/translate_a/element.js?cb=initTranslate";
-        document.body.appendChild(gt);
-      } else {
-        doTranslate(lang);
-      }
+  <script type="text/javascript"
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,tr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
 
-      window.initTranslate = function () {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,tr',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-        setTimeout(function () {
-          doTranslate(lang);
-        }, 500);
-      };
-
-      function doTranslate(langCode) {
-        var select = document.querySelector(".goog-te-combo");
+    function translatePage(langCode) {
+      const interval = setInterval(() => {
+        const select = document.querySelector(".goog-te-combo");
         if (select) {
           select.value = langCode;
-          select.dispatchEvent(new Event('change'));
+          select.dispatchEvent(new Event("change"));
+          clearInterval(interval);
         }
-      }
+      }, 300);
     }
   </script>
-
-  <!-- Enriched popup template logic will be needed here (custom JS template) -->
 </body>
 </html>
