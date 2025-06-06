@@ -22,7 +22,6 @@ infoBox.innerHTML = `
 `;
 document.body.appendChild(infoBox);
 
-
 var map = L.map('map', {
   zoomControl: false,
   maxZoom: 28,
@@ -72,8 +71,46 @@ function pointToMarker(feature, latlng) {
 }
 
 function onEachFeature(feature, layer) {
-  let props = feature.properties;
-  let popupContent = `<strong>${props.name}</strong><br>${props.description}`;
+  let p = feature.properties;
+
+  let popupContent = `
+    <strong>${p.name}</strong><br>
+    <em>${p.description}</em>
+    <hr>
+
+    <strong>Basic Information</strong>
+    <ul>
+      <li>Period: ${p.period}</li>
+      <li>Data Type: ${p.data_type}</li>
+      <li>Century: ${p.century}</li>
+      <li>Geography: ${p.geography}</li>
+      <li>Culture: ${p.culture}</li>
+    </ul>
+
+    <strong>Structural and Morphological Classification</strong>
+    <ul>
+      <li>Neck Length: ${p.neck_length}</li>
+      <li>Soundbox Type: ${p.soundbox_type}</li>
+      <li>Material: ${p.material}</li>
+      <li>String Count: ${p.string_count}</li>
+      <li>Tuning Info: ${p.tuning_info}</li>
+      <li>Fret Info: ${p.fret_info}</li>
+      <li>Visual Design: ${p.visual_design}</li>
+    </ul>
+
+    <strong>Contextual and Performative Classification</strong>
+    <ul>
+      <li>Performance Type: ${p.performance_type}</li>
+      <li>Right Hand Technique: ${p.right_hand_tech}</li>
+      <li>Left Hand Technique: ${p.left_hand_tech}</li>
+      <li>Plectrum Technique: ${p.plectrum_tech}</li>
+      <li>Posture: ${p.posture}</li>
+      <li>Performance Mode: ${p.performance_mode}</li>
+      <li>Semantic: ${p.semantic}</li>
+      <li>Location Info: ${p.location_info}</li>
+    </ul>
+  `;
+
   layer.bindPopup(popupContent);
 }
 
