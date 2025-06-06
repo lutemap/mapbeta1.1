@@ -38,9 +38,15 @@ var esriSatellite = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/s
   maxZoom: 28
 });
 
+var ohm = L.tileLayer('https://tiles.openhistoricalmap.org/ohm/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenHistoricalMap contributors',
+  maxZoom: 22
+});
+
 var baseMaps = {
   "ESRI Street": esriStreet,
-  "ESRI Satellite": esriSatellite
+  "ESRI Satellite": esriSatellite,
+  "Open Historical Map": ohm
 };
 
 L.control.layers(baseMaps, null, { position: 'bottomright' }).addTo(map);
