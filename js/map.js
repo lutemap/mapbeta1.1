@@ -31,6 +31,11 @@ var map = L.map('map', {
 var esriStreet = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
   attribution: '',
   maxZoom: 28
+});
+
+var ohm = L.tileLayer('https://tiles.openhistoricalmap.org/ohm/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenHistoricalMap contributors',
+  maxZoom: 22
 }).addTo(map);
 
 var esriSatellite = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -153,4 +158,36 @@ function applyFilters() {
 
 document.querySelectorAll('#filter-panel input[type=checkbox]').forEach(cb => {
   cb.addEventListener('change', applyFilters);
+});
+
+// --- Century Slider ---
+const centuryOptions = [
+  "12th century",
+  "12th century BC",
+  "2nd century BC"
+];
+
+const sliderGroup = document.createElement('div');
+sliderGroup.className = 'filter-group';
+sliderGroup.innerHTML = `
+  <strong>Century (Slider)</strong><br>
+  <input type="range" id="century-range" min="0" max="${centuryOptions.length - 1}" value="0">
+  <div style="font-size: 11px;">Selected: <span id="century-value">${centuryOptions[0]}</span></div>
+`;
+
+document.getElementById('filter-panel').appendChild(sliderGroup);
+
+document.getElementById("century-range").addEventListener("input", function () {
+  const selected = centuryOptions[this.value];
+  document.getElementById("century-value").textContent = selected;
+
+  document.querySelectorAll(".filter-century").forEach(cb => {
+    cb.checked = false;
+  });
+
+  const target = Array.from(document.querySelectorAll(".filter-century"))
+    .find(cb => cb.value === selected);
+  if (target) target.checked = true;
+
+  applyFilters();
 });
