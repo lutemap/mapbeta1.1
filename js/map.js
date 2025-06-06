@@ -36,12 +36,14 @@ var esriStreet = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/serv
 var ohm = L.tileLayer('https://tiles.openhistoricalmap.org/ohm/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenHistoricalMap contributors',
   maxZoom: 22
-}).addTo(map);
+});
 
 var esriSatellite = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   attribution: '',
   maxZoom: 28
 });
+
+esriStreet.addTo(map);
 
 var baseMaps = {
   "ESRI Street": esriStreet,
