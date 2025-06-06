@@ -1,4 +1,9 @@
-<title>LuteMap Filter Demo</title>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LuteMap Filter Demo</title>
   <link rel="stylesheet" href="css/leaflet.css">
   <link rel="stylesheet" href="css/qgis2web.css">
   <style>
@@ -23,20 +28,10 @@
     .filter-group {
       margin-bottom: 10px;
     }
-
-    #google_translate_element {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-      font-family: sans-serif;
-    }
   </style>
 </head>
 <body>
   <div id="map"></div>
-
-  <div id="google_translate_element"></div>
 
   <div id="filter-panel">
     <h3>Filters</h3>
@@ -87,15 +82,5 @@
   <script src="js/labels.js"></script>
   <script src="data/map_data_2.js"></script>
   <script src="js/map.js"></script>
-
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        {pageLanguage: 'en', includedLanguages: 'en,tr'},
-        'google_translate_element'
-      );
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
