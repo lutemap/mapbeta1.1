@@ -65,12 +65,8 @@
 <body>
   <div id="map"></div>
 
-  <!-- Combined Control Panel (Language + Filter Toggle) -->
-  <div id="control-panel">
-    <button onclick="translatePage('en')">EN</button>
-    <button onclick="translatePage('tr')">TR</button>
-    <button onclick="toggleFilters()">Filters</button>
-  </div>
+  <!-- Google Translate Visible Element -->
+  <div id="google_translate_element" style="position: absolute; top: 10px; right: 10px; z-index: 1000;"></div>
 
   <div id="filter-panel">
     <h3>Filters</h3>
@@ -126,34 +122,17 @@
   </script>
 
   <!-- Google Translate Integration -->
-  <div id="google_translate_element" style="display:none;"></div>
-  <script type="text/javascript"
-          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-  </script>
-  <script>
+  <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
         includedLanguages: 'en,tr',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
       }, 'google_translate_element');
     }
-
-    function translatePage(langCode) {
-      function tryTranslate(attemptsLeft) {
-        const select = document.querySelector(".goog-te-combo");
-        if (select) {
-          select.value = langCode;
-          select.dispatchEvent(new Event("change"));
-        } else if (attemptsLeft > 0) {
-          setTimeout(() => tryTranslate(attemptsLeft - 1), 500);
-        } else {
-          console.warn("Google Translate dropdown not found.");
-        }
-      }
-      tryTranslate(10); // retry up to 10 times (5 seconds max)
-    }
+  </script>
+  <script type="text/javascript"
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
   </script>
 </body>
 </html>
