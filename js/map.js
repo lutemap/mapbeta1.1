@@ -54,27 +54,37 @@ var baseMaps = {
 L.control.layers(baseMaps, null, { position: 'bottomright' }).addTo(map);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-function getIconUrl(period, dataType) {
-  const key = `${period}_${dataType}`;
-  const iconMap = {
-    "Antiquity_Visual Document": "map_data_2_AntiquityVisualDocument0.png",
-    "Antiquity_Written Document": "map_data_2_AntiquityWrittenDocument1.png",
-    "Middle Ages_Visual Document": "map_data_2_MiddleAgesVisualDocument2.png",
-    "Middle Ages_Written Document": "map_data_2_MiddleAgesWrittenDocument3.png"
-  };
-  return `legend/${iconMap[key] || "map_data_2_AntiquityVisualDocument0.png"}`;
-}
+const iconMap = {
+  "Antiquity_Visual Document": L.icon({
+    iconUrl: 'icons/icon_bronze_visual.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+  }),
+  "Antiquity_Written Document": L.icon({
+    iconUrl: 'icons/icon_bronze_written.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+  }),
+  "Middle Ages_Visual Document": L.icon({
+    iconUrl: 'icons/icon_medieval_visual.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+  }),
+  "Middle Ages_Written Document": L.icon({
+    iconUrl: 'icons/icon_medieval_written.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+  })
+};
 
 function pointToMarker(feature, latlng) {
   const props = feature.properties;
-  const iconUrl = getIconUrl(props.period, props.data_type);
-
-  const icon = L.icon({
-    iconUrl: iconUrl,
-    iconSize: [32, 32],
-    iconAnchor: [16, 16]
-  });
-
+  const key = `${props.period}_${props.data_type}`;
+  const icon = iconMap[key] || iconMap["Antiquity_Visual Document"];
   return L.marker(latlng, { icon: icon });
 }
 
@@ -157,7 +167,6 @@ document.querySelectorAll('#filter-panel input[type=checkbox]').forEach(cb => {
   cb.addEventListener('change', applyFilters);
 });
 
-// --- Century Slider ---
 const centuryOptions = [
   "12th century",
   "12th century BC",
