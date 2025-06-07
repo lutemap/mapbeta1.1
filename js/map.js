@@ -30,28 +30,29 @@ legendBox.style.background = 'rgba(255, 255, 255, 0.9)';
 legendBox.style.padding = '10px';
 legendBox.style.borderRadius = '8px';
 legendBox.style.fontFamily = 'sans-serif';
-legendBox.style.display = 'flex';
-legendBox.style.gap = '12px';
 legendBox.style.zIndex = 1000;
-
-const iconDefs = [
-  { img: 'icons/clean_icon_bronze_visual.png', label: 'Antiquity + Visual Document' },
-  { img: 'icons/clean_icon_bronze_written.png', label: 'Antiquity + Written Document' },
-  { img: 'icons/clean_icon_medieval_visual.png', label: 'Middle Ages + Visual Document' },
-  { img: 'icons/clean_icon_medieval_written.png', label: 'Middle Ages + Written Document' }
-];
-
-iconDefs.forEach(icon => {
-  const container = document.createElement('div');
-  container.style.textAlign = 'center';
-  container.style.fontSize = '11px';
-  container.innerHTML = `
-    <img src="${icon.img}" width="36" height="36" style="display:block; margin:0 auto 4px;">
-    ${icon.label}
-  `;
-  legendBox.appendChild(container);
-});
-
+legendBox.innerHTML = `
+  <div style="display: flex; gap: 12px; align-items: center;">
+    <div style="text-align: center; font-size: 11px;">
+      <img src="icons/clean_icon_bronze_visual.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
+      Visual Document
+    </div>
+    <div style="font-weight: bold; font-size: 12px;">Antiquity</div>
+    <div style="text-align: center; font-size: 11px;">
+      <img src="icons/clean_icon_bronze_written.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
+      Written Document
+    </div>
+    <div style="font-weight: bold; font-size: 12px; margin-left: 12px;">Middle Ages</div>
+    <div style="text-align: center; font-size: 11px;">
+      <img src="icons/clean_icon_medieval_visual.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
+      Visual Document
+    </div>
+    <div style="text-align: center; font-size: 11px;">
+      <img src="icons/clean_icon_medieval_written.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
+      Written Document
+    </div>
+  </div>
+`;
 document.body.appendChild(legendBox);
 
 var map = L.map('map', {
