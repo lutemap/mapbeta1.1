@@ -33,27 +33,45 @@ legendBox.style.fontFamily = 'sans-serif';
 legendBox.style.zIndex = 1000;
 legendBox.innerHTML = `
   <div style="display: flex; gap: 12px; align-items: center;">
-    <div style="text-align: center; font-size: 11px;">
+    <div class="legend-icon" data-period="Antiquity" data-type="Visual Document" style="text-align: center; font-size: 11px; cursor: pointer;">
       <img src="icons/clean_icon_bronze_visual.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Visual Document
     </div>
     <div style="text-align: center; font-size: 12px; font-weight: bold;">Antiquity</div>
-    <div style="text-align: center; font-size: 11px;">
+    <div class="legend-icon" data-period="Antiquity" data-type="Written Document" style="text-align: center; font-size: 11px; cursor: pointer;">
       <img src="icons/clean_icon_bronze_written.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Written Document
     </div>
-    <div style="text-align: center; font-size: 11px;">
+    <div class="legend-icon" data-period="Middle Ages" data-type="Visual Document" style="text-align: center; font-size: 11px; cursor: pointer;">
       <img src="icons/clean_icon_medieval_visual.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Visual Document
     </div>
     <div style="text-align: center; font-size: 12px; font-weight: bold;">Middle Ages</div>
-    <div style="text-align: center; font-size: 11px;">
+    <div class="legend-icon" data-period="Middle Ages" data-type="Written Document" style="text-align: center; font-size: 11px; cursor: pointer;">
       <img src="icons/clean_icon_medieval_written.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Written Document
     </div>
   </div>
 `;
 document.body.appendChild(legendBox);
+
+// Add interactivity to legend icons
+const legendIcons = document.querySelectorAll('.legend-icon');
+legendIcons.forEach(icon => {
+  icon.addEventListener('click', function () {
+    const selectedPeriod = this.dataset.period;
+    const selectedType = this.dataset.type;
+
+    document.querySelectorAll('.filter-period').forEach(cb => cb.checked = cb.value === selectedPeriod);
+    document.querySelectorAll('.filter-data_type').forEach(cb => cb.checked = cb.value === selectedType);
+
+    legendIcons.forEach(i => i.style.outline = '');
+    this.style.outline = '2px solid #333';
+    this.style.outlineOffset = '2px';
+
+    applyFilters();
+  });
+});
 
 var map = L.map('map', {
   zoomControl: false,
