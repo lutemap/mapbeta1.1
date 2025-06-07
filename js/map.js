@@ -37,16 +37,16 @@ legendBox.innerHTML = `
       <img src="icons/clean_icon_bronze_visual.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Visual Document
     </div>
-    <div style="font-weight: bold; font-size: 12px;">Antiquity</div>
+    <div style="text-align: center; font-size: 12px; font-weight: bold;">Antiquity</div>
     <div style="text-align: center; font-size: 11px;">
       <img src="icons/clean_icon_bronze_written.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Written Document
     </div>
-    <div style="font-weight: bold; font-size: 12px; margin-left: 12px;">Middle Ages</div>
     <div style="text-align: center; font-size: 11px;">
       <img src="icons/clean_icon_medieval_visual.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Visual Document
     </div>
+    <div style="text-align: center; font-size: 12px; font-weight: bold;">Middle Ages</div>
     <div style="text-align: center; font-size: 11px;">
       <img src="icons/clean_icon_medieval_written.png" width="36" height="36" style="display:block; margin:0 auto 4px;">
       Written Document
