@@ -56,25 +56,25 @@ L.control.zoom({ position: 'bottomright' }).addTo(map);
 
 const iconMap = {
   "Antiquity_Visual Document": L.icon({
-    iconUrl: 'icons/icon_bronze_visual.png',
+    iconUrl: 'icons/clean_icon_bronze_visual.png',
     iconSize: [40, 40],
     iconAnchor: [20, 40],
     popupAnchor: [0, -40]
   }),
   "Antiquity_Written Document": L.icon({
-    iconUrl: 'icons/icon_bronze_written.png',
+    iconUrl: 'icons/clean_icon_bronze_written.png',
     iconSize: [40, 40],
     iconAnchor: [20, 40],
     popupAnchor: [0, -40]
   }),
   "Middle Ages_Visual Document": L.icon({
-    iconUrl: 'icons/icon_medieval_visual.png',
+    iconUrl: 'icons/clean_icon_medieval_visual.png',
     iconSize: [40, 40],
     iconAnchor: [20, 40],
     popupAnchor: [0, -40]
   }),
   "Middle Ages_Written Document": L.icon({
-    iconUrl: 'icons/icon_medieval_written.png',
+    iconUrl: 'icons/clean_icon_medieval_written.png',
     iconSize: [40, 40],
     iconAnchor: [20, 40],
     popupAnchor: [0, -40]
