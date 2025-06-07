@@ -22,6 +22,38 @@ infoBox.innerHTML = `
 `;
 document.body.appendChild(infoBox);
 
+const legendBox = document.createElement('div');
+legendBox.style.position = 'absolute';
+legendBox.style.bottom = '10px';
+legendBox.style.left = '10px';
+legendBox.style.background = 'rgba(255, 255, 255, 0.9)';
+legendBox.style.padding = '10px';
+legendBox.style.borderRadius = '8px';
+legendBox.style.fontFamily = 'sans-serif';
+legendBox.style.display = 'flex';
+legendBox.style.gap = '12px';
+legendBox.style.zIndex = 1000;
+
+const iconDefs = [
+  { img: 'icons/clean_icon_bronze_visual.png', label: 'Antiquity + Visual Document' },
+  { img: 'icons/clean_icon_bronze_written.png', label: 'Antiquity + Written Document' },
+  { img: 'icons/clean_icon_medieval_visual.png', label: 'Middle Ages + Visual Document' },
+  { img: 'icons/clean_icon_medieval_written.png', label: 'Middle Ages + Written Document' }
+];
+
+iconDefs.forEach(icon => {
+  const container = document.createElement('div');
+  container.style.textAlign = 'center';
+  container.style.fontSize = '11px';
+  container.innerHTML = `
+    <img src="${icon.img}" width="36" height="36" style="display:block; margin:0 auto 4px;">
+    ${icon.label}
+  `;
+  legendBox.appendChild(container);
+});
+
+document.body.appendChild(legendBox);
+
 var map = L.map('map', {
   zoomControl: false,
   maxZoom: 28,
