@@ -80,8 +80,7 @@
       }
 
       #language-panel,
-      #filter-toggle-panel,
-      #filter-panel {
+      #filter-toggle-panel {
         position: static;
         width: calc(100% - 20px);
         margin: 10px auto;
@@ -91,8 +90,14 @@
       }
 
       #filter-panel {
-        display: block; /* mobilde her zaman açık olabilir ya da JS ile kontrol edilir */
+        display: block;
+        position: relative;
+        z-index: 1002;
+        width: calc(100% - 20px);
+        margin: 10px auto;
+        background: rgba(255,255,255,0.98);
         max-height: none;
+        overflow-y: auto;
       }
 
       .filter-group {
