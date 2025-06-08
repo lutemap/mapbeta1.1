@@ -72,6 +72,39 @@
     .filter-group {
       margin-bottom: 10px;
     }
+
+    /* 🌐 MOBİL DÜZENLEMELER */
+    @media only screen and (max-width: 768px) {
+      #map {
+        height: 60vh;
+      }
+
+      #language-panel,
+      #filter-toggle-panel,
+      #filter-panel {
+        position: static;
+        width: calc(100% - 20px);
+        margin: 10px auto;
+        display: block;
+        z-index: initial;
+        box-shadow: none;
+      }
+
+      #filter-panel {
+        display: block; /* mobilde her zaman açık olabilir ya da JS ile kontrol edilir */
+        max-height: none;
+      }
+
+      .filter-group {
+        padding: 6px 0;
+        font-size: 16px;
+      }
+
+      .custom-popup {
+        max-width: 90vw;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
