@@ -7,38 +7,32 @@
   <link rel="stylesheet" href="css/leaflet.css">
   <link rel="stylesheet" href="css/qgis2web.css">
   <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    #map {
-      width: 100%;
-      height: 100%;
-    }
-
-    #language-panel,
-    #filter-toggle-panel {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 6px 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      font-family: sans-serif;
-      z-index: 2000;
+    html, body, #map {
+      width: 100%; height: 100%; margin: 0; padding: 0;
     }
 
     #language-panel {
-      bottom: 10px;
+      position: absolute;
+      top: 10px;
       right: 10px;
-      top: auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1001;
+      font-family: sans-serif;
     }
 
     #filter-toggle-panel {
+      position: absolute;
       top: 70px;
       right: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 6px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1001;
+      font-family: sans-serif;
     }
 
     #filter-toggle-panel button {
@@ -66,7 +60,7 @@
       border-radius: 8px;
       max-height: 80vh;
       overflow-y: auto;
-      z-index: 1999;
+      z-index: 999;
       font-family: sans-serif;
       width: 250px;
     }
@@ -77,47 +71,6 @@
 
     .filter-group {
       margin-bottom: 10px;
-    }
-
-    /* 🌐 MOBİL DÜZENLEMELER */
-    @media only screen and (max-width: 768px) {
-      #filter-panel {
-        display: none;
-        position: fixed;
-        top: 120px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 3000;
-        width: 90%;
-        max-height: 65vh;
-        overflow-y: auto;
-        background: rgba(255,255,255,0.98);
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      }
-
-      .filter-group {
-        padding: 6px 0;
-        font-size: 16px;
-      }
-
-      .custom-popup {
-        max-width: 90vw;
-        font-size: 14px;
-      }
-
-      #language-panel {
-        bottom: 10px;
-        top: auto;
-        right: 10px;
-        left: auto;
-      }
-
-      #filter-toggle-panel {
-        top: 10px;
-        right: 10px;
-      }
     }
   </style>
 </head>
@@ -134,7 +87,6 @@
     <button onclick="toggleFilters()">Filters</button>
   </div>
 
-  <!-- Filter Panel -->
   <div id="filter-panel">
     <h3>Filters</h3>
     <div class="filter-group">
@@ -184,8 +136,7 @@
   <script>
     function toggleFilters() {
       const panel = document.getElementById("filter-panel");
-      const isHidden = window.getComputedStyle(panel).display === "none";
-      panel.style.display = isHidden ? "block" : "none";
+      panel.style.display = (panel.style.display === "none" || panel.style.display === "") ? "block" : "none";
     }
   </script>
 
