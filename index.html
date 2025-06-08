@@ -19,28 +19,24 @@
       height: 100%;
     }
 
-    #language-panel {
+    #language-panel,
+    #filter-toggle-panel {
       position: absolute;
-      top: 10px;
       right: 10px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       padding: 6px 10px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1001;
       font-family: sans-serif;
+      z-index: 2000;
+    }
+
+    #language-panel {
+      top: 10px;
     }
 
     #filter-toggle-panel {
-      position: absolute;
       top: 70px;
-      right: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 6px 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      z-index: 1001;
-      font-family: sans-serif;
     }
 
     #filter-toggle-panel button {
@@ -68,7 +64,7 @@
       border-radius: 8px;
       max-height: 80vh;
       overflow-y: auto;
-      z-index: 999;
+      z-index: 1999;
       font-family: sans-serif;
       width: 250px;
     }
@@ -81,18 +77,20 @@
       margin-bottom: 10px;
     }
 
+    #infoBox {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(255,255,255,0.95);
+      padding: 10px;
+      border-radius: 8px;
+      font-family: sans-serif;
+      max-width: 250px;
+      z-index: 1500;
+    }
+
     /* 🌐 MOBİL ÖZEL DÜZENLEMELER */
     @media only screen and (max-width: 768px) {
-      #language-panel,
-      #filter-toggle-panel {
-        position: static;
-        width: calc(100% - 20px);
-        margin: 10px auto;
-        display: block;
-        z-index: initial;
-        box-shadow: none;
-      }
-
       #filter-panel {
         display: none;
         position: fixed;
@@ -134,6 +132,7 @@
     <button onclick="toggleFilters()">Filters</button>
   </div>
 
+  <!-- Filter Panel -->
   <div id="filter-panel">
     <h3>Filters</h3>
     <div class="filter-group">
@@ -163,6 +162,12 @@
       <label><input type="checkbox" class="filter-culture" value="Paphlagonian" checked> Paphlagonian</label><br>
       <label><input type="checkbox" class="filter-culture" value="Roman" checked> Roman</label>
     </div>
+  </div>
+
+  <!-- Info Box -->
+  <div id="infoBox">
+    <strong>Map Info</strong><br>
+    Period: Antiquity / Middle Ages
   </div>
 
   <!-- JS scripts -->
