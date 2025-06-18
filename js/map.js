@@ -17,16 +17,16 @@ infoBox.innerHTML = `
   <div style="font-weight: bold; font-size: 14px;">
     Chronological and Geographical Distribution Map<br>
     of Data on the Lute Instrument<br>
-    in Anatolia and culturally related regions<br>
-    from Antiquity to the End of the Middle Ages
+    in Anatolia and Its Culturally Affiliated Regions<br>
+    from Antiquity through the End of the Middle Ages<br>
   </div>
   <div style="margin-top: 10px; font-size: 12px;">
-    Created as the PhD Dissertation Output.
+    Created as a PhD Dissertation Output.<br>
   </div>
   </div>
   <div style="margin-top: 10px; font-size: 12px;">
     Antiquity from the 4th Millennium BC to the V. Century AD<br>
-    Middle Ages from the V. Century AD to the XVI. Century AD.
+    Middle Ages from the V. Century AD to the XVI. Century AD.<br> <br> Representative Data
   </div>
 `;
 document.body.appendChild(infoBox);
