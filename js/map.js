@@ -10,7 +10,7 @@ infoBox.style.fontFamily = 'sans-serif';
 infoBox.style.zIndex = 1000;
 infoBox.innerHTML = `
   <div style="margin-top: 10px; font-size: 12px;">
-    Hacettepe University
+    Hacettepe University <br>
   </div>
   <div style="font-weight: bold; font-size: 16px;">Chronological Atlas of Lute-Typed Musical Instruments </div>
   <div style="height: 20px;"></div>
