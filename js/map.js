@@ -152,7 +152,7 @@ function onEachFeature(feature, layer) {
     <a href="#" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'; return false;" style="display:block; margin-top:6px; font-size:11px; font-style: italic; color: #0066cc;">
       Show Detailed Classifications
     </a>
-    <div style="display:none; font-size:11.5px;">
+    <div style="display:none; font-size:11.5px; max-height: 200px; overflow-y: auto; padding-right: 4px;">
       <strong>Basic Information</strong>
       <ul>
         <li>Period: ${p.period}</li>
