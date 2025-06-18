@@ -9,15 +9,24 @@ infoBox.style.maxWidth = '280px';
 infoBox.style.fontFamily = 'sans-serif';
 infoBox.style.zIndex = 1000;
 infoBox.innerHTML = `
-  <div style="font-weight: bold; font-size: 16px;">Hacettepe University</div>
+  <div style="margin-top: 10px; font-size: 12px;">
+    Hacettepe University
+  </div>
+  <div style="font-weight: bold; font-size: 16px;">Chronological Atlas of Lute-Typed Musical Instruments </div>
   <div style="height: 20px;"></div>
   <div style="font-weight: bold; font-size: 14px;">
-    Geographical Distribution Map<br>
+    Chronological and Geographical Distribution Map<br>
     of Data on the Lute Instrument<br>
+    in Anatolia and culturally related regions<br>
     from Antiquity to the End of the Middle Ages
   </div>
   <div style="margin-top: 10px; font-size: 12px;">
     Created as the PhD Dissertation Output.
+  </div>
+  </div>
+  <div style="margin-top: 10px; font-size: 12px;">
+    Antiquity from the 4th Millennium BC to the V. Century AD<br>
+    Middle Ages from the V. Century AD to the XVI. Century AD.
   </div>
 `;
 document.body.appendChild(infoBox);
