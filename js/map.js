@@ -147,43 +147,45 @@ function onEachFeature(feature, layer) {
   let p = feature.properties;
 
   let popupContent = `
-    <strong>${p.name}</strong><br>
-    <em>${p.description}</em>
-    <a href="#" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'; return false;" style="display:block; margin-top:6px; font-size:11px; font-style: italic; color: #0066cc;">
-      Show Detailed Classifications
-    </a>
-    <div style="display:none; font-size:11.5px; max-height: 250px; overflow-y: auto; padding: 4px 8px 20px 4px; box-sizing: border-box; background: white; margin-top: 8px; border-radius: 6px;">
-      <strong>Basic Information</strong>
-      <ul>
-        <li>Period: ${p.period}</li>
-        <li>Data Type: ${p.data_type}</li>
-        <li>Century: ${p.century}</li>
-        <li>Geography: ${p.geography}</li>
-        <li>Culture: ${p.culture}</li>
-      </ul>
+    <div style="max-height: 500px; overflow-y: auto; padding: 8px;">
+      <strong>${p.name}</strong><br>
+      <em>${p.description}</em>
+      <a href="#" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'; return false;" style="display:block; margin-top:6px; font-size:11px; font-style: italic; color: #0066cc;">
+        Show Detailed Classifications
+      </a>
+      <div style="display:none; font-size:11.5px; margin-top: 8px;">
+        <strong>Basic Information</strong>
+        <ul>
+          <li>Period: ${p.period}</li>
+          <li>Data Type: ${p.data_type}</li>
+          <li>Century: ${p.century}</li>
+          <li>Geography: ${p.geography}</li>
+          <li>Culture: ${p.culture}</li>
+        </ul>
 
-      <strong>Structural and Morphological Classification</strong>
-      <ul>
-        <li>Neck Length: ${p.neck_length}</li>
-        <li>Soundbox Type: ${p.soundbox_type}</li>
-        <li>Material: ${p.material}</li>
-        <li>String Count: ${p.string_count}</li>
-        <li>Tuning Info: ${p.tuning_info}</li>
-        <li>Fret Info: ${p.fret_info}</li>
-        <li>Visual Design: ${p.visual_design}</li>
-      </ul>
+        <strong>Structural and Morphological Classification</strong>
+        <ul>
+          <li>Neck Length: ${p.neck_length}</li>
+          <li>Soundbox Type: ${p.soundbox_type}</li>
+          <li>Material: ${p.material}</li>
+          <li>String Count: ${p.string_count}</li>
+          <li>Tuning Info: ${p.tuning_info}</li>
+          <li>Fret Info: ${p.fret_info}</li>
+          <li>Visual Design: ${p.visual_design}</li>
+        </ul>
 
-      <strong>Contextual and Performative Classification</strong>
-      <ul>
-        <li>Performance Type: ${p.performance_type}</li>
-        <li>Right Hand Technique: ${p.right_hand_tech}</li>
-        <li>Left Hand Technique: ${p.left_hand_tech}</li>
-        <li>Plectrum Technique: ${p.plectrum_tech}</li>
-        <li>Posture: ${p.posture}</li>
-        <li>Performance Mode: ${p.performance_mode}</li>
-        <li>Semantic: ${p.semantic}</li>
-        <li>Location Info: ${p.location_info}</li>
-      </ul>
+        <strong>Contextual and Performative Classification</strong>
+        <ul>
+          <li>Performance Type: ${p.performance_type}</li>
+          <li>Right Hand Technique: ${p.right_hand_tech}</li>
+          <li>Left Hand Technique: ${p.left_hand_tech}</li>
+          <li>Plectrum Technique: ${p.plectrum_tech}</li>
+          <li>Posture: ${p.posture}</li>
+          <li>Performance Mode: ${p.performance_mode}</li>
+          <li>Semantic: ${p.semantic}</li>
+          <li>Location Info: ${p.location_info}</li>
+        </ul>
+      </div>
     </div>
   `;
 
